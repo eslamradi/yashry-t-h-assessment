@@ -1,8 +1,6 @@
 <?php 
 
-use Yashry\Cart\Parsers\ParserInterface;
-
-class ApiRequestParser implements ParserInterface
+class ApiRequestParser
 {
     public function parse(){}
 }
