@@ -1,22 +1,35 @@
 #!/usr/bin/env php
-<?php 
+<?php
 
 require __DIR__ . '/vendor/autoload.php';
 
+use Yashry\Cart\ActionInvoker;
+use Yashry\Cart\Dispatchers\ApiDispatcher;
+use \Yashry\Cart\Parsers\CommandLineParser;
+
 // $command = new Comm
+$command = '';
+$parameters = '';
 
-if (php_sapi_name() !== 'cli') {
-    exit;
+if (php_sapi_name() == 'cli') {
+    $parser = new CommandLineParser;
+    list($command, $parameters) = $parser->parse($argc, $argv);
+    print $command;
+    print_r($parameters);
+}
+else {
+    $parser = new ApiRequestParser;
+    // list($command, $parameters) = $parser->parse();
 }
 
-$availableActions = include('config/actions.php');
+// $actionInvoker = new ActionInvoker;
+// $response = $actionInvoker->invoke($command, $parameters);
 
-foreach ($availableActions as $action => $callable) {
-    if($argv[1] == $action){
-        print 'found';
-        $c = new $callable;
-        $c->run();
-    } else {
-        print 'not';
-    }
-}
+// if (php_sapi_name() == 'cli') {
+//     $dispatcher = new CommandLineDispatcher;
+//     $dispatcher->dispatch($response);
+// } else {
+//     $dispatcher = new ApiDispatcher;
+//     $dispatcher->dispatch($response);
+// }
+
