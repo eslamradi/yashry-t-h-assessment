@@ -1,0 +1,17 @@
+{
+    "name": "yashry/cart",
+    "description": "Solution for the take-home-coding-challenge for yashry/edfa3ly assessment",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Yashry\\Cart\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "radi",
+            "email": "eslamradii@gmail.com"
+        }
+    ],
+    "require": {}
+}
