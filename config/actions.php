@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'CreateCart' => \Yashry\Cart\Actions\CreateCart::class,
+    'createCart' => \Yashry\Cart\Actions\CreateCart::class,
 ];
