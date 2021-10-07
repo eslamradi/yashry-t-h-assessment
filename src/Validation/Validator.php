@@ -8,13 +8,13 @@ use Yashry\Cart\Validation\RuleInterface;
 class Validator
 {
 
-    public $rules;
+    protected $rules;
 
     public function __construct()
     {
         $this->rules = [];
     }
-    public function queue(RuleInterface $rule)
+    public function queue($rule)
     {
         $this->rules[] = $rule;
     }
@@ -22,11 +22,14 @@ class Validator
     {
         $this->rules = [];
     }
-    public function run()
+    public function runOn($value)
     {
         foreach ($this->rules as $rule) {
             $rule = new $rule;
-            $rule->validate();
+            if( ! $rule->validate($value)){
+                return false;
+            }
         }
+        return true;
     }
 }

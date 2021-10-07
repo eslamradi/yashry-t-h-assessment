@@ -1,5 +1,5 @@
 <?php
 namespace Yashry\Cart\Validation;
 interface RuleInterface {
-    public function validate();
+    public function validate($value);
 }
